@@ -1,6 +1,6 @@
 import { BookPreview } from "./BookPreview.jsx";
 
-export function BookList({ books, onRemoveBook }) {
+export function BookList({ books, onRemoveBook, onSelectBookId }) {
 
     return (
         <ul className="book-list container clean-list">
@@ -11,7 +11,7 @@ export function BookList({ books, onRemoveBook }) {
                         <button onClick={() => onRemoveBook(book.id)}>
                             Remove
                         </button>
-                        <button>
+                        <button onClick={() => onSelectBookId(book.id)}>
                             Details
                         </button>
                     </section>
