@@ -1,25 +1,36 @@
+.book-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
 
-.book-list{
-    font-family: 'Edu VIC WA NT Beginner', cursive;
-    font-size: 1.2rem;
-    tr:nth-child(even) {
-        background-color: var(--clr2bg);
-    }
-    td{
-        padding: 8px;
-        gap: 5px;
-    }
-    .list-btns{
+    li {
         display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        padding-bottom: 5px;
+        background-color: var(--clr2bg);
+        border-radius: 8px;
+
+        li.loading {
+            opacity: 0.7;
+        }
     }
 
-    button{
-        border: none;
-        border-radius: 5px;
-        padding: 8px;
-        background-color: var(--clr1bg);
-        &:hover{
-            color: var(--clr2bg-light);
+    .list-btns {
+        display: flex;
+        gap: 5px;
+
+        button {
+            border: none;
+            border-radius: 5px;
+            padding: 8px;
+            background-color: var(--clr1bg);
+
+            &:hover {
+                color: var(--clr2bg-light);
+            }
         }
     }
 }
