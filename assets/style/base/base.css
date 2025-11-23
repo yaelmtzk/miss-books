@@ -40,7 +40,10 @@ object {
   outline: 1px solid gold
 }
 
-
 .about nav a {
     margin-right: 10px;
+}
+
+button{
+  cursor: pointer;
 }

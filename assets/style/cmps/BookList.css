@@ -1,0 +1,25 @@
+
+.book-list{
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+    font-size: 1.2rem;
+    tr:nth-child(even) {
+        background-color: var(--clr2bg);
+    }
+    td{
+        padding: 8px;
+        gap: 5px;
+    }
+    .list-btns{
+        display: flex;
+    }
+
+    button{
+        border: none;
+        border-radius: 5px;
+        padding: 8px;
+        background-color: var(--clr1bg);
+        &:hover{
+            color: var(--clr2bg-light);
+        }
+    }
+}

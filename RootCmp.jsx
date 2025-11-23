@@ -7,7 +7,7 @@ import { BookIndex } from "./pages/Index.jsx"
 const {useState } = React
 
 export function RootCmp() {
-    const [page, setPage] = useState('home')
+    const [page, setPage] = useState('index')
     return (
             <section className="app main-layout">
                 <AppHeader page={page} onSetPage={setPage} />
