@@ -1,6 +1,6 @@
 import { BookPreview } from "./BookPreview.jsx";
 
-export function BookList({ books }) {
+export function BookList({ books, onRemoveBook }) {
 
     return (
         <ul className="book-list container clean-list">
@@ -8,7 +8,7 @@ export function BookList({ books }) {
                     <li key={book.id}>
                     <BookPreview book={book} />
                     <section className="list-btns">
-                        <button>
+                        <button onClick={() => onRemoveBook(book.id)}>
                             Remove
                         </button>
                         <button>

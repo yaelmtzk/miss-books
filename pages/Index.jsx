@@ -20,15 +20,29 @@ export function BookIndex() {
             })
     }
 
+    function onRemoveBook(bookId) {
+        bookService.remove(bookId)
+            .then(() => {
+                setBooks(books => (
+                    books.filter(book => book.id !== bookId)
+                ))
+            })
+            .catch(err => {
+                console.log('err:', err)
+            })
+    }
+
+
     if (!books) return <div>Loading...</div>
 
     return (
         <section className="book-index">
             {<React.Fragment>
-                    <BookList
-                        books={books}
-                    />
-                </React.Fragment>
+                <BookList
+                    books={books}
+                    onRemoveBook={onRemoveBook}
+                />
+            </React.Fragment>
             }
         </section>
     )

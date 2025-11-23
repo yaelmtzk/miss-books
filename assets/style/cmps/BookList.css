@@ -20,7 +20,7 @@
 
     .list-btns {
         display: flex;
-        gap: 5px;
+        gap: 15px;
 
         button {
             border: none;
