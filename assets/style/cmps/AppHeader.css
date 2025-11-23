@@ -1,0 +1,38 @@
+.app-header {
+    background-color: var(--clr1);
+    color: var(--clr2bg-light);
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.logo-box {
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+    text-align: center;
+    img {
+        height: 100px;
+        width: 100px;
+    }
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav {
+    display: flex;
+    gap: 15px;
+}
+
+a.active {
+    color: var(--home-text-color);
+    font-weight: 600;
+    text-decoration: underline white;
+}
+
+@media (max-width: 720px) {
+    .app-header {
+        color: var(--clr2bg-light);
+    }
+}

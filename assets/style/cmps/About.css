@@ -1,0 +1,25 @@
+/* Container */
+.about {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: var(--home-bg-color);
+    color: var(--home-text-color);
+    text-align: center;
+    padding: 60px 20px;
+
+    h1 {
+        font-size: 3.5rem;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+}
+
+.about-text {
+    font-size: 1.25rem;
+    max-width: 700px;
+    margin-bottom: 20px;
+    line-height: 1.8;
+}

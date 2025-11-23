@@ -1,0 +1,32 @@
+:root {
+  --clr1: rgb(96, 107, 91);
+  --clr2: rgb(120, 99, 110);
+
+  --clr1bg: rgb(153, 166, 149);
+  --clr1bg-light: rgb(205, 221, 200);
+  --clr2bg: rgb(233, 206, 221);
+  --clr2bg-light: rgb(253, 236, 246);
+
+  --gray1: rgb(240, 240, 240);
+  --gray2: rgb(155, 155, 155);
+  --gray3: rgb(44, 44, 44);
+
+  /* Home Page */
+  /* Background */
+  --home-bg-gradient-start: #c5cbb9; 
+  --home-bg-gradient-end: #606b5b; 
+
+  /* Text */
+  --home-text-color: #2c3e50; 
+  /* Primary Button */
+  --home-primary-btn-bg: #4a5042;  
+  --home-primary-btn-hover: #66715d; 
+  --home-primary-btn-text: #ffffff;
+
+  /* Secondary Button */
+  --home-secondary-btn-bg: #f4f1e0;
+  --home-secondary-btn-border: #606b5b; 
+  --home-secondary-btn-text: #606b5b; 
+  --home-secondary-btn-hover-bg: #606b5b; 
+  --home-secondary-btn-hover-text: #ffffff;
+}
