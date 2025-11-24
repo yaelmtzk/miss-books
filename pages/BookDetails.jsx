@@ -44,7 +44,12 @@ export function BookDetails() {
     if (currYear - publishedDate>10)  publishStat = 'Vintage'
     else if (currYear - publishedDate < 1) readingLvl = 'New'
 
+    let priceClass = ''
+    if (amount>150) priceClass = 'red'
+    else if (amount<20) priceClass = 'green'
+
     const loadingClass = isLoading ? 'loading' : ''
+
 
     return (
         <section className= {`book-details container ${loadingClass}`}>
@@ -52,7 +57,7 @@ export function BookDetails() {
             <h2>{subtitle}</h2>
             <img src={`../assets/img/${id}.jpg`} alt="Book Image" />
             <p>Author: {authors}</p>
-            <p>Price: {currencyCode} {amount}</p>
+            <p className={priceClass}>Price: {currencyCode} {amount}</p>
             <p>Published At: {publishedDate} - <span>{publishStat}</span></p>
             <p>Pages: {pageCount} - <span>{readingLvl}</span></p>
             <LongTxt txt={description} />

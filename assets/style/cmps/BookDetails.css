@@ -59,4 +59,12 @@
     background-color: var(--home-secondary-btn-hover-bg);
     color: var(--home-secondary-btn-hover-text);
   }
+
+  .red{
+    color:brown;
+  }
+
+  .green{
+    color:forestgreen;
+  }
 }

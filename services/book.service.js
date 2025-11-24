@@ -235,7 +235,7 @@ const gBooks = [
     categories: ["Prayer", "Jewish Liturgy"],
     thumbnail: "http://coding-academy.org/books-photos/sidur.jpg",
     language: "he",
-    listPrice: { amount: 39, currencyCode: "USD", isOnSale: true }
+    listPrice: { amount: 15, currencyCode: "USD", isOnSale: true }
   },
   {
     id: "JWB019",
