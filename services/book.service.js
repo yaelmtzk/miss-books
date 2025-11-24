@@ -261,65 +261,78 @@ const gBooks = [
     categories: ["Kabbalah", "Mysticism"],
     thumbnail: "http://coding-academy.org/books-photos/shaar-hagilgulim.jpg",
     language: "he",
-    listPrice: { amount: 49, currencyCode: "USD", isOnSale: false }
+    listPrice: { amount: 200, currencyCode: "USD", isOnSale: false }
   }
 ]
 
 _createBooks()
 
 export const bookService = {
-    query,
-    get,
-    remove,
-    save
+  query,
+  get,
+  remove,
+  save,
+  getDefaultFilter
 }
 
-function query() {
-    console.log(storageService.query(BOOKS_KEY));
-    
-    return storageService.query(BOOKS_KEY)
+function query(filterBy = {}) {
+  return storageService.query(BOOKS_KEY)
+    .then(books => {
+      if (filterBy.title) {
+        const regExp = new RegExp(filterBy.title, 'i')
+        books = books.filter(book => regExp.test(book.title))
+      }
+      if (filterBy.price) {
+        books = books.filter(book => book.listPrice.amount >= filterBy.price)
+      }
+      return books
+    })
+}
+
+function getDefaultFilter() {
+    return { title: '', price: '' }
 }
 
 function get(bookId) {
-    return storageService.get(BOOKS_KEY, bookId)
+  return storageService.get(BOOKS_KEY, bookId)
 }
 
 function remove(bookId) {
-    return storageService.remove(BOOKS_KEY, bookId)
+  return storageService.remove(BOOKS_KEY, bookId)
 }
 
 function save(book) {
-    if (book.id) {
-        return storageService.put(BOOKS_KEY, book)
-    } else {
-        return storageService.post(BOOKS_KEY, book)
-    }
+  if (book.id) {
+    return storageService.put(BOOKS_KEY, book)
+  } else {
+    return storageService.post(BOOKS_KEY, book)
+  }
 }
 
 function _createBooks() {
-    let books = utilService.loadFromStorage(BOOKS_KEY)
-    if (!books || !books.length) {
-        books = gBooks
-        utilService.saveToStorage(BOOKS_KEY, books)
-    }
+  let books = utilService.loadFromStorage(BOOKS_KEY)
+  if (!books || !books.length) {
+    books = gBooks
+    utilService.saveToStorage(BOOKS_KEY, books)
+  }
 }
 
 function _createBook(title, listPrice) {
-    const book = getEmptyBook(title, listPrice)
-    book.id = utilService.makeId()
-    return book
+  const book = getEmptyBook(title, listPrice)
+  book.id = utilService.makeId()
+  return book
 }
 
 function getEmptyBook(title = '') {
-    return {
-        id: '',
-        title,
-        description: "placerat nisi sodales suscipit tellus",
-        thumbnail: '',
-        listPrice: {
-            "amount": 109,
-            "currencyCode": "EUR",
-            "isOnSale": false
-        }
+  return {
+    id: '',
+    title,
+    description: "placerat nisi sodales suscipit tellus",
+    thumbnail: '',
+    listPrice: {
+      "amount": 109,
+      "currencyCode": "EUR",
+      "isOnSale": false
     }
+  }
 }
