@@ -3,7 +3,6 @@ import { BookList } from "../cmps/BookList.jsx"
 import { BookDetails } from "BookDetails.jsx"
 import { BookFilter } from "../cmps/BookFilter.jsx"
 
-
 const { useState, useEffect } = React
 
 export function BookIndex() {
@@ -68,5 +67,4 @@ export function BookIndex() {
             }
         </section>
     )
-
 }

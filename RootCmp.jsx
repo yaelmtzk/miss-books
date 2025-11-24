@@ -2,7 +2,7 @@
 import { AppHeader } from "./cmps/AppHeader.jsx"
 import { HomePage } from "./pages/Home.jsx"
 import { AboutUs } from "./pages/About.jsx"
-import { BookIndex } from "./pages/Index.jsx"
+import { BookIndex } from "./pages/BookIndex.jsx"
 
 const {useState } = React
 

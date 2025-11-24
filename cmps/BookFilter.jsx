@@ -9,8 +9,6 @@ export function BookFilter({ defaultFilter, onSetFilter }) {
     const onSetFilterDebounce = useRef(debounce(onSetFilter, 400)).current
 
     useEffect(() => {
-        console.log('hi');
-        
         onSetFilterDebounce(filterByToEdit)
     }, [filterByToEdit])
 

@@ -272,7 +272,8 @@ export const bookService = {
   get,
   remove,
   save,
-  getDefaultFilter
+  getDefaultFilter,
+  getEmptyBook
 }
 
 function query(filterBy = {}) {
@@ -305,6 +306,8 @@ function save(book) {
   if (book.id) {
     return storageService.put(BOOKS_KEY, book)
   } else {
+
+    
     return storageService.post(BOOKS_KEY, book)
   }
 }
@@ -317,21 +320,27 @@ function _createBooks() {
   }
 }
 
-function _createBook(title, listPrice) {
-  const book = getEmptyBook(title, listPrice)
-  book.id = utilService.makeId()
-  return book
-}
+// function _createBook(title, listPrice) {
+//   const book = getEmptyBook(title, listPrice)
+//   book.id = utilService.makeId()
+//   return book
+// }
 
-function getEmptyBook(title = '') {
+function getEmptyBook(title = '', price = utilService.getRandomIntInclusive(20, 300)) {
   return {
-    id: '',
-    title,
-    description: "placerat nisi sodales suscipit tellus",
-    thumbnail: '',
+    id:'',
+    title, 
+    subtitle: utilService.makeLorem(10),
+    authors: 'Unkown',
+    publishedDate: new Date().getFullYear(),
+    description: utilService.makeLorem(),
+    categories: [],
+    language: "en",
+    pageCount: utilService.getRandomIntInclusive(500, 2000),
+    thumbnail: 'http://coding-academy.org/books-photos/default.jpg',
     listPrice: {
-      "amount": 109,
-      "currencyCode": "EUR",
+      "amount": price,
+      "currencyCode": "US",
       "isOnSale": false
     }
   }
