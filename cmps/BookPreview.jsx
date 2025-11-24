@@ -3,7 +3,9 @@ export function BookPreview({ book }) {
     const {title, id, subtitle, listPrice :{isOnSale}} = book
     return (
         <article className="book-preview">
-            <img src={`../assets/img/${id}.jpg`} alt="Book Image" />
+            <img src={`../assets/img/${id}.jpg`} 
+            onError={(ev) => ev.target.src = '/assets/img/default.jpg'} 
+            alt="Book Image" />
             {isOnSale && 
             (<span className="sale-badge">Sale</span>)}
            

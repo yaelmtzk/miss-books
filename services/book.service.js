@@ -285,7 +285,7 @@ function query(filterBy = {}) {
         books = books.filter(book => regExp.test(book.title))
       }
       if (price) {
-        books = books.filter(book => book.listPrice.amount >= filterBy.price)
+        books = books.filter(book => book.listPrice.amount >= price)
       }
       if (author) {
         const regExp = new RegExp(author, 'i')
@@ -333,7 +333,7 @@ function _createBooks() {
 //   return book
 // }
 
-function getEmptyBook(title = '', price = utilService.getRandomIntInclusive(20, 300)) {
+function getEmptyBook(title = '', price = 0) {
   const ctgs = [
     'Commentary', 'Ethics', 'Guidance',
     'Hasidism', 'Jewish Law', 'Jewish Liturgy',
@@ -347,17 +347,17 @@ function getEmptyBook(title = '', price = utilService.getRandomIntInclusive(20, 
     id: '',
     title,
     subtitle: utilService.makeLorem(10),
-    authors: 'Unkown',
+    authors: [],
     publishedDate: new Date().getFullYear(),
     description: utilService.makeLorem(),
     categories: [ctgs[utilService.getRandomIntInclusive(0, ctgs.length - 1)]],
     language: "en",
     pageCount: utilService.getRandomIntInclusive(500, 2000),
-    thumbnail: `http://coding-academy.org/books-photos/${i + 1}.jpg`,
+    thumbnail: `http://coding-academy.org/books-photos/default.jpg`,
     listPrice: {
-      "amount": price,
-      "currencyCode": "US",
-      "isOnSale": false
+      amount: price,
+      currencyCode: "US",
+      isOnSale: false
     }
   }
 }

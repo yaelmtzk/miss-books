@@ -8,12 +8,12 @@ const { Link } = ReactRouterDOM
 export function BookIndex() {
     const [books, setBooks] = useState(null)
     const [filterBy, setFilterBy] = useState(bookService.getDefaultFilter())
-    
+
     useEffect(() => {
         loadBooks()
     }, [filterBy])
 
-    function loadBooks() {       
+    function loadBooks() {
         bookService.query(filterBy)
             .then(setBooks)
             .catch(err => {
@@ -45,6 +45,11 @@ export function BookIndex() {
                 defaultFilter={filterBy}
                 onSetFilter={onSetFilter}
             />
+            <div className="add-btn-section">
+                <button className="add-btn">
+                    <Link to="/index/edit">Add Book</Link>
+                </button>
+            </div>
 
             <BookList
                 books={books}

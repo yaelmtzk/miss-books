@@ -55,13 +55,19 @@ export function BookDetails() {
         <section className= {`book-details container ${loadingClass}`}>
             <h1>{title}</h1>
             <h2>{subtitle}</h2>
-            <img src={`../assets/img/${id}.jpg`} alt="Book Image" />
+            <img src={`../assets/img/${id}.jpg`} 
+            onError={(ev) => ev.target.src = '/assets/img/default.jpg'} 
+            alt="Book Image" />
             <p>Author: {authors}</p>
             <p className={priceClass}>Price: {currencyCode} {amount}</p>
             <p>Published At: {publishedDate} - <span>{publishStat}</span></p>
             <p>Pages: {pageCount} - <span>{readingLvl}</span></p>
             <LongTxt txt={description} />
-            <button onClick={onBack}>Back</button>
+            <div className="btn-section">
+                <button onClick={onBack}>Back</button>
+                <button ><Link to={`/index/edit/${book.id}`}>Edit</Link></button>                
+            </div>
+
             {/* <section>
                 <button><Link to={`/index/${book.prevBookId}`}>Prev</Link></button>
                 <button><Link to={`/index/${book.nextBookId}`}>Next</Link></button>
