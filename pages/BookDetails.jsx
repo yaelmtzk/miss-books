@@ -40,7 +40,7 @@ export function BookDetails({ bookId, onBack }) {
             <h2>{subtitle}</h2>
             <img src={`../assets/img/${id}.jpg`} alt="Book Image" />
             <p>Author: {authors}</p>
-            <p>Price {currencyCode} {amount}</p>
+            <p>Price: {currencyCode} {amount}</p>
             <p>Published At: {publishedDate} - <span>{publishStat}</span></p>
             <p>Pages: {pageCount} - <span>{readingLvl}</span></p>
             <LongTxt txt={description} />

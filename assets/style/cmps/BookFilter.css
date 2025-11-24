@@ -1,5 +1,5 @@
 .book-filter {
-    background-color: var(--clr2bg);
+    background-color: var(--home-bg-gradient-start);
     padding-block: 1em;
 
     h2 {
@@ -7,19 +7,12 @@
     }
 
     form {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(130px, 180px));
+        display: flex;
         gap: .5em;
         justify-content: center;
 
         input {
             justify-self: end;
-        }
-
-        button {
-            margin-inline: 0;
-            grid-column: 1 / 3;
-            justify-self: center;
         }
     }
 

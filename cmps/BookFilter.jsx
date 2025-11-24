@@ -4,7 +4,7 @@ const { useState, useEffect, useRef } = React
 
 export function BookFilter({ defaultFilter, onSetFilter }) {
 
-    const [filterByToEdit, setFilterToEdit] = useState({ ...defaultFilter })
+    const [filterByToEdit, setFilterByToEdit] = useState({ ...defaultFilter })
 
     const onSetFilterDebounce = useRef(debounce(onSetFilter, 400)).current
 
@@ -25,10 +25,10 @@ export function BookFilter({ defaultFilter, onSetFilter }) {
                 value = target.checked
                 break
         }
-        setFilterToEdit(prevFilter => ({ ...prevFilter, [field]: value }))
+        setFilterByToEdit(prevFilter => ({ ...prevFilter, [field]: value }))
     }
 
-    const { title, price } = filterByToEdit
+    const { title, price, authors } = filterByToEdit
     return (
         <section className="book-filter container">
             <h2>Filter Our Books</h2>
@@ -37,8 +37,11 @@ export function BookFilter({ defaultFilter, onSetFilter }) {
                 <label htmlFor="title">Title</label>
                 <input onChange={handleChange} value={title} name="title" id="title" type="text" />
 
-                <label htmlFor="price">Minimum Price</label>
+                <label htmlFor="price">Min. Price</label>
                 <input onChange={handleChange} value={price || ''} name="price" id="price" type="number" />
+
+                <label htmlFor="author">Author</label>
+                <input onChange={handleChange} value={authors} name="author" id="author" type="text" />
             </form>
         </section>
     )

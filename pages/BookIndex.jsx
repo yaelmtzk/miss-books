@@ -14,7 +14,7 @@ export function BookIndex() {
         loadBooks()
     }, [filterBy])
 
-    function loadBooks() {
+    function loadBooks() {       
         bookService.query(filterBy)
             .then(setBooks)
             .catch(err => {
@@ -36,6 +36,11 @@ export function BookIndex() {
 
     function onSelectBookId(bookId) {
         setSelectedBookId(bookId)
+    }
+
+    function goBack() {
+        setSelectedBookId(null)
+        onSetFilter(bookService.getDefaultFilter())
     }
 
     function onSetFilter(newFilterBy) {
@@ -63,7 +68,7 @@ export function BookIndex() {
             {selectedBookId &&
                 <BookDetails
                     bookId={selectedBookId}
-                    onBack={() => setSelectedBookId(null)}
+                    onBack={() => goBack()}
                 />
             }
         </section>

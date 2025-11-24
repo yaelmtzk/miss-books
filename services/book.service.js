@@ -279,19 +279,26 @@ export const bookService = {
 function query(filterBy = {}) {
   return storageService.query(BOOKS_KEY)
     .then(books => {
-      if (filterBy.title) {
-        const regExp = new RegExp(filterBy.title, 'i')
+      const { title, price, author } = filterBy
+      if (title) {
+        const regExp = new RegExp(title, 'i')
         books = books.filter(book => regExp.test(book.title))
       }
-      if (filterBy.price) {
+      if (price) {
         books = books.filter(book => book.listPrice.amount >= filterBy.price)
+      }
+      if (author) {
+        const regExp = new RegExp(author, 'i')
+        books = books.filter(book =>
+          book.authors.some(a => regExp.test(a))
+        )
       }
       return books
     })
 }
 
 function getDefaultFilter() {
-    return { title: '', price: '' }
+  return { title: '', price: '', author: '' }
 }
 
 function get(bookId) {
@@ -307,7 +314,7 @@ function save(book) {
     return storageService.put(BOOKS_KEY, book)
   } else {
 
-    
+
     return storageService.post(BOOKS_KEY, book)
   }
 }
@@ -328,25 +335,25 @@ function _createBooks() {
 
 function getEmptyBook(title = '', price = utilService.getRandomIntInclusive(20, 300)) {
   const ctgs = [
-  'Commentary', 'Ethics', 'Guidance',
-  'Hasidism', 'Jewish Law', 'Jewish Liturgy',
-  'Jewish Thought', 'Kabbalah', 'Ketuvim',
-  'Mishnah', 'Mitzvot', 'Mussar', 'Mysticism',
-  'Nevi\'im', 'Philosophy', 'Prayer', 'Talmud',
-  'Torah'
-]
+    'Commentary', 'Ethics', 'Guidance',
+    'Hasidism', 'Jewish Law', 'Jewish Liturgy',
+    'Jewish Thought', 'Kabbalah', 'Ketuvim',
+    'Mishnah', 'Mitzvot', 'Mussar', 'Mysticism',
+    'Nevi\'im', 'Philosophy', 'Prayer', 'Talmud',
+    'Torah'
+  ]
 
   return {
-    id:'',
-    title, 
+    id: '',
+    title,
     subtitle: utilService.makeLorem(10),
     authors: 'Unkown',
     publishedDate: new Date().getFullYear(),
     description: utilService.makeLorem(),
-    categories:  [ctgs[utilService.getRandomIntInclusive(0, ctgs.length - 1)]],
+    categories: [ctgs[utilService.getRandomIntInclusive(0, ctgs.length - 1)]],
     language: "en",
     pageCount: utilService.getRandomIntInclusive(500, 2000),
-    thumbnail: `http://coding-academy.org/books-photos/${i+1}.jpg`,
+    thumbnail: `http://coding-academy.org/books-photos/${i + 1}.jpg`,
     listPrice: {
       "amount": price,
       "currencyCode": "US",
