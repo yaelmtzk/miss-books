@@ -1,6 +1,5 @@
-const { useRef } = React
 
-export function AboutUs() {
+export function About() {
     return (
         <section className="about">
             <h1>About us...</h1>

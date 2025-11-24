@@ -2,14 +2,18 @@ import { bookService } from "../services/book.service.js"
 import { LongTxt } from "../cmps/LongTxt.jsx"
 
 const { useState, useEffect } = React
+const { useParams, useNavigate, Link } = ReactRouterDOM
 
-export function BookDetails({ bookId, onBack }) {
+export function BookDetails() {
 
     const [book, setBook] = useState(null)
+    const [isLoading, setIsLoading] = useState(false)
+    const { bookId } = useParams()
+    const navigate = useNavigate()
 
     useEffect(() => {
         loadBook()
-    }, [])
+    }, [bookId])
 
     function loadBook() {
         bookService.get(bookId)
@@ -17,9 +21,15 @@ export function BookDetails({ bookId, onBack }) {
             .catch(err => {
                 console.log('err:', err)
             })
+            .finally(() => setIsLoading(false))
+    }
+
+    function onBack() {
+        navigate('/index')
     }
 
     if (!book) return <div>Loading...</div>
+
     const { title, subtitle, id, description, 
         pageCount, publishedDate, authors, 
         listPrice: {amount, currencyCode}} = book
@@ -34,8 +44,10 @@ export function BookDetails({ bookId, onBack }) {
     if (currYear - publishedDate>10)  publishStat = 'Vintage'
     else if (currYear - publishedDate < 1) readingLvl = 'New'
 
+    const loadingClass = isLoading ? 'loading' : ''
+
     return (
-        <section className="book-details container">
+        <section className= {`book-details container ${loadingClass}`}>
             <h1>{title}</h1>
             <h2>{subtitle}</h2>
             <img src={`../assets/img/${id}.jpg`} alt="Book Image" />
@@ -45,6 +57,10 @@ export function BookDetails({ bookId, onBack }) {
             <p>Pages: {pageCount} - <span>{readingLvl}</span></p>
             <LongTxt txt={description} />
             <button onClick={onBack}>Back</button>
+            {/* <section>
+                <button><Link to={`/index/${book.prevBookId}`}>Prev</Link></button>
+                <button><Link to={`/index/${book.nextBookId}`}>Next</Link></button>
+            </section> */}
         </section>
     )
 }

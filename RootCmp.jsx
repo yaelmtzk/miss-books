@@ -1,23 +1,28 @@
+const Router = ReactRouterDOM.HashRouter
+const { Route, Routes, Navigate } = ReactRouterDOM
 
-import { AppHeader } from "./cmps/AppHeader.jsx"
-import { HomePage } from "./pages/Home.jsx"
-import { AboutUs } from "./pages/About.jsx"
+import { Home } from "./pages/Home.jsx"
+import { About } from "./pages/About.jsx"
 import { BookIndex } from "./pages/BookIndex.jsx"
-
-const {useState } = React
+import { BookDetails } from "./pages/BookDetails.jsx"
+import { AppHeader } from "./cmps/AppHeader.jsx"
 
 export function RootCmp() {
-    const [page, setPage] = useState('index')
     return (
+        <Router>
             <section className="app main-layout">
-                <AppHeader page={page} onSetPage={setPage} />
+                <AppHeader />
                 <main>
-                    <main>
-                        {page === 'home' && <HomePage />}
-                        {page === 'about' && <AboutUs />}
-                        {page === 'index' && <BookIndex />}
-                    </main>
+                    <Routes>
+                        <Route path="/" element={<Navigate to="/home" />} />
+                        <Route path="/home" element={<Home />} />
+                        <Route path="/about" element={<About />} />
+                        <Route path="/index" element={<BookIndex />} />
+                        <Route path="/index/:bookId" element={<BookDetails />} />
+                    </Routes>
+
                 </main>
             </section>
+        </Router>
     )
 }

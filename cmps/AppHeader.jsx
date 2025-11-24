@@ -1,11 +1,6 @@
+const { Link, NavLink } = ReactRouterDOM
 
-export function AppHeader({page = 'home', onSetPage}) {
-
-    function onPageChange(ev, page) {
-        ev.preventDefault()
-        onSetPage(page)
-    }    
-
+export function AppHeader() { 
     return (
         <header className="app-header full main-layout">
             <section className="header-container">
@@ -13,20 +8,10 @@ export function AppHeader({page = 'home', onSetPage}) {
                     <img src="../assets/img/logo.png" alt="logo" />
                     <p>Miss Books</p>
                 </div>
-                
                 <nav>
-                    <a href="" className={(page === 'home') ? 'active' : ''}
-                        onClick={(ev) => onPageChange(ev, 'home')}>
-                        Home
-                    </a> |
-                    <a href="" className={(page === 'about') ? 'active' : ''}
-                        onClick={(ev) => onPageChange(ev, 'about')}>
-                        About
-                    </a>
-                        <a href="" className={(page === 'index') ? 'active' : ''}
-                        onClick={(ev) => onPageChange(ev, 'index')}>
-                        Book Index
-                    </a>
+                    <NavLink to="/home">Home</NavLink>
+                    <NavLink to="/about">About</NavLink>
+                    <NavLink to="/index">Book Index</NavLink>
                 </nav>
             </section>
         </header>
