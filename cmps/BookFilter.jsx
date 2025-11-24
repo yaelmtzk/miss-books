@@ -41,8 +41,6 @@ export function BookFilter({ defaultFilter, onSetFilter }) {
 
                 <label htmlFor="price">Minimum Price</label>
                 <input onChange={handleChange} value={price || ''} name="price" id="price" type="number" />
-
-                {/* <button>Submit</button> */}
             </form>
         </section>
     )
