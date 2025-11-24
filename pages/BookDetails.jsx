@@ -27,6 +27,11 @@ export function BookDetails({ bookId, onBack }) {
     if (pageCount>500)  readingLvl = 'Serious Reading'
     else if (pageCount>200) readingLvl = 'Decent Reading'
     else readingLvl = 'Light Reading'
+    
+    const currYear = new Date().getFullYear()
+    let publishStat = ''
+    if (currYear - publishedDate>10)  publishStat = 'Vintage'
+    else if (currYear - publishedDate < 1) readingLvl = 'New'
 
     return (
         <section className="book-details container">
@@ -35,8 +40,12 @@ export function BookDetails({ bookId, onBack }) {
             <img src={`../assets/img/${id}.jpg`} alt="Book Image" />
             <p>Author: {authors}</p>
             <p>Price {currencyCode} {amount}</p>
-            <p>Published At: {publishedDate}</p>
-            <p>Pages: {pageCount} - {readingLvl}</p>
+            <p>Published At: {publishedDate} - 
+                <span>{publishStat}</span>
+            </p>
+            <p>Pages: {pageCount} - 
+                <span>{readingLvl}</span>
+            </p>
             <p>{description}</p>
             <button onClick={onBack}>Back</button>
         </section>
