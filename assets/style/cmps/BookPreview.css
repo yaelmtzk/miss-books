@@ -1,4 +1,5 @@
 .book-preview {
+    position: relative;
     text-align: center;
     padding: 0.3em;
     display: flex;
@@ -12,5 +13,18 @@
 
     img {
         max-width: 100px;
+    }
+
+    .sale-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #d4af37; 
+        color: var(--home-secondary-btn-hover-text);
+        padding: 0.25rem 0.5rem;
+        font-weight: bold;
+        font-size: 0.8rem;
+        border-radius: 4px;
+        text-transform: uppercase;
     }
 }

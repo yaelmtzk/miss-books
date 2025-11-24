@@ -1,10 +1,14 @@
 
 export function BookPreview({ book }) {
+    const {title, id, subtitle, listPrice :{isOnSale}} = book
     return (
         <article className="book-preview">
-            <h4>{book.title}</h4>
-            <p>{book.subtitle}</p>
-            <img src={`../assets/img/${book.id}.jpg`} alt="Book Image" />
+            <img src={`../assets/img/${id}.jpg`} alt="Book Image" />
+            {isOnSale && 
+            (<span className="sale-badge">Sale</span>)}
+           
+            <h4>{title}</h4>
+            <p>{subtitle}</p>
         </article>
     )
 }
