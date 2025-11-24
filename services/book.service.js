@@ -76,7 +76,7 @@ const gBooks = [
     publishedDate: 2000,
     description: "An authoritative codification of Jewish law by Maimonides.",
     pageCount: 1000,
-    categories: ["Jewish Law", "Halacha"],
+    categories: ["Jewish Law"],
     thumbnail: "http://coding-academy.org/books-photos/mishneh-torah.jpg",
     language: "he",
     listPrice: { amount: 99, currencyCode: "USD", isOnSale: false }
@@ -115,7 +115,7 @@ const gBooks = [
     publishedDate: 1565,
     description: "The standard codification of Jewish law, widely studied and referenced.",
     pageCount: 950,
-    categories: ["Jewish Law", "Halacha"],
+    categories: ["Jewish Law"],
     thumbnail: "http://coding-academy.org/books-photos/shulchan-aruch.jpg",
     language: "he",
     listPrice: { amount: 79, currencyCode: "USD", isOnSale: true }
@@ -206,7 +206,7 @@ const gBooks = [
     publishedDate: 1907,
     description: "Authoritative commentary on Jewish law covering daily observances.",
     pageCount: 700,
-    categories: ["Jewish Law", "Halacha"],
+    categories: ["Jewish Law"],
     thumbnail: "http://coding-academy.org/books-photos/mishnah-berurah.jpg",
     language: "he",
     listPrice: { amount: 69, currencyCode: "USD", isOnSale: false }
@@ -219,7 +219,7 @@ const gBooks = [
     publishedDate: 1885,
     description: "Guidelines and ethical teachings on proper speech and guarding against lashon hara.",
     pageCount: 300,
-    categories: ["Ethics", "Moral Guidance"],
+    categories: ["Ethics", "Guidance"],
     thumbnail: "http://coding-academy.org/books-photos/shemirat-halashon.jpg",
     language: "he",
     listPrice: { amount: 29, currencyCode: "USD", isOnSale: false }
@@ -327,6 +327,15 @@ function _createBooks() {
 // }
 
 function getEmptyBook(title = '', price = utilService.getRandomIntInclusive(20, 300)) {
+  const ctgs = [
+  'Commentary', 'Ethics', 'Guidance',
+  'Hasidism', 'Jewish Law', 'Jewish Liturgy',
+  'Jewish Thought', 'Kabbalah', 'Ketuvim',
+  'Mishnah', 'Mitzvot', 'Mussar', 'Mysticism',
+  'Nevi\'im', 'Philosophy', 'Prayer', 'Talmud',
+  'Torah'
+]
+
   return {
     id:'',
     title, 
@@ -334,10 +343,10 @@ function getEmptyBook(title = '', price = utilService.getRandomIntInclusive(20, 
     authors: 'Unkown',
     publishedDate: new Date().getFullYear(),
     description: utilService.makeLorem(),
-    categories: [],
+    categories:  [ctgs[utilService.getRandomIntInclusive(0, ctgs.length - 1)]],
     language: "en",
     pageCount: utilService.getRandomIntInclusive(500, 2000),
-    thumbnail: 'http://coding-academy.org/books-photos/default.jpg',
+    thumbnail: `http://coding-academy.org/books-photos/${i+1}.jpg`,
     listPrice: {
       "amount": price,
       "currencyCode": "US",

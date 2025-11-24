@@ -19,16 +19,25 @@ export function BookDetails({ bookId, onBack }) {
     }
 
     if (!book) return <div>Loading...</div>
-    const { title, subtitle } = book
+    const { title, subtitle, id, description, 
+        pageCount, publishedDate, authors, 
+        listPrice: {amount, currencyCode}} = book
+
+    let readingLvl
+    if (pageCount>500)  readingLvl = 'Serious Reading'
+    else if (pageCount>200) readingLvl = 'Decent Reading'
+    else readingLvl = 'Light Reading'
+
     return (
         <section className="book-details container">
             <h1>{title}</h1>
             <h2>{subtitle}</h2>
-            <img src={`../assets/img/${book.id}.jpg`} alt="Book Image" />
-            <p>Author: {book.authors}</p>
-            <p>Price {book.listPrice.currencyCode} {book.listPrice.amount}</p>
-            <p>Published At: {book.publishedDate}</p>
-            <p>{book.description}</p>
+            <img src={`../assets/img/${id}.jpg`} alt="Book Image" />
+            <p>Author: {authors}</p>
+            <p>Price {currencyCode} {amount}</p>
+            <p>Published At: {publishedDate}</p>
+            <p>Pages: {pageCount} - {readingLvl}</p>
+            <p>{description}</p>
             <button onClick={onBack}>Back</button>
         </section>
     )
