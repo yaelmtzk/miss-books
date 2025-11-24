@@ -1,4 +1,5 @@
 import { bookService } from "../services/book.service.js"
+import { LongTxt } from "../cmps/LongTxt.jsx"
 
 const { useState, useEffect } = React
 
@@ -40,13 +41,9 @@ export function BookDetails({ bookId, onBack }) {
             <img src={`../assets/img/${id}.jpg`} alt="Book Image" />
             <p>Author: {authors}</p>
             <p>Price {currencyCode} {amount}</p>
-            <p>Published At: {publishedDate} - 
-                <span>{publishStat}</span>
-            </p>
-            <p>Pages: {pageCount} - 
-                <span>{readingLvl}</span>
-            </p>
-            <p>{description}</p>
+            <p>Published At: {publishedDate} - <span>{publishStat}</span></p>
+            <p>Pages: {pageCount} - <span>{readingLvl}</span></p>
+            <LongTxt txt={description} />
             <button onClick={onBack}>Back</button>
         </section>
     )

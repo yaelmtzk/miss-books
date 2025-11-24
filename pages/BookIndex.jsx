@@ -52,11 +52,12 @@ export function BookIndex() {
                         defaultFilter={filterBy}
                         onSetFilter={onSetFilter}
                     />
-                    <BookList
+                    {!!books.length && <BookList
                         books={books}
                         onRemoveBook={onRemoveBook}
                         onSelectBookId={onSelectBookId}
-                    />
+                    />}
+                    {!books.length && <div className="no-books"> No books found...</div>}
                 </React.Fragment>
             }
             {selectedBookId &&

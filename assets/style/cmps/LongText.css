@@ -1,0 +1,14 @@
+.long-txt{
+    padding-top: 15px;
+    .txt{
+        font-size: 1rem;
+    }
+    .show-txt{
+        color: black;
+        font-size: small;
+
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}

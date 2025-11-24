@@ -47,3 +47,9 @@ object {
 button{
   cursor: pointer;
 }
+
+.no-books{
+  padding-top: 100px;
+  text-align: center;
+  font-size: 1.5rem;
+}

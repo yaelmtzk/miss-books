@@ -35,7 +35,7 @@ const gBooks = [
     subtitle: "Babylonian Talmud",
     authors: ["Various Rabbis"],
     publishedDate: 2010,
-    description: "The Babylonian Talmud, a central text of Rabbinic Judaism, discussing law, ethics, and customs.",
+    description: "The Babylonian Talmud, a central text of Rabbinic Judaism, discussing law, ethics, and customs. The Babylonian Talmud, a central text of Rabbinic Judaism, discussing law, ethics, and customs. The Babylonian Talmud, a central text of Rabbinic Judaism, discussing law, ethics, and customs. The Babylonian Talmud, a central text of Rabbinic Judaism, discussing law, ethics, and customs. The Babylonian Talmud, a central text of Rabbinic Judaism, discussing law, ethics, and customs.",
     pageCount: 2500,
     categories: ["Talmud", "Jewish Law"],
     thumbnail: "http://coding-academy.org/books-photos/talmud-bavli.jpg",
