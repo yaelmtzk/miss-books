@@ -6,6 +6,9 @@ body {
   margin: 0;
   color: var(--gray3);
 }
+main{
+  place-items: center;
+}
 
 h1,
 h2,
@@ -41,38 +44,42 @@ object {
 }
 
 .about nav a {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
-button{
+button {
   cursor: pointer;
 }
 
-.no-books{
+.no-books {
   padding-top: 100px;
   margin: auto;
   text-align: center;
   font-size: 1.5rem;
 }
 
-.add-btn-section{
-    button {
-        cursor: pointer;
-        background-color: var(--clr2bg);
-        margin-top: 0.5em;
-        border: 1px solid var(--clr2);
-        padding: 0.5em 0.8em;
-        border-radius: 4px;
-    }
+.add-btn-section {
+  button {
+    cursor: pointer;
+    background-color: var(--clr2bg);
+    margin-top: 0.5em;
+    border: 1px solid var(--clr2);
+    padding: 0.5em 0.8em;
+    border-radius: 4px;
+  }
 
-    button:hover {
-        background-color: var(--clr2);
-        color: white;
-        transition: 0.3s;
-    }
+  button:hover {
+    background-color: var(--clr2);
+    color: white;
+    transition: 0.3s;
+  }
 
-    input:focus {
-        background-color: var(--clr1bg);
-        transition: background-color 1s;
-    }
+  input:focus {
+    background-color: var(--clr1bg);
+    transition: background-color 1s;
+  }
+}
+
+.book-index {
+  width: fit-content;
 }

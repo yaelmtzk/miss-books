@@ -11,13 +11,17 @@
         align-items: center;
         font-size: 1.5rem;
         font-family: 'Edu VIC WA NT Beginner', cursive;
-        width: 50vw;
+        width: fit-content;
         margin: auto;
         margin-top: 50px;
 
         input {
-            max-width: 300px;
+            min-width: 300px;
             margin-bottom: 15px;
+            &:focus {
+                background-color: var(--clr1bg);
+                transition: background-color 1s;
+            }
         }
     }
 
@@ -34,10 +38,5 @@
         background-color: var(--clr2);
         color: white;
         transition: 0.3s;
-    }
-
-    input:focus {
-        background-color: var(--clr1bg);
-        transition: background-color 1s;
     }
 }

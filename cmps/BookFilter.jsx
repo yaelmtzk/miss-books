@@ -28,11 +28,10 @@ export function BookFilter({ defaultFilter, onSetFilter }) {
         setFilterByToEdit(prevFilter => ({ ...prevFilter, [field]: value }))
     }
 
-    const { title, price, authors } = filterByToEdit
+    const { title, price, author } = filterByToEdit
     return (
         <section className="book-filter container">
             <h2>Filter Our Books</h2>
-
             <form>
                 <label htmlFor="title">Title</label>
                 <input onChange={handleChange} value={title} name="title" id="title" type="text" />
@@ -41,7 +40,7 @@ export function BookFilter({ defaultFilter, onSetFilter }) {
                 <input onChange={handleChange} value={price || ''} name="price" id="price" type="number" />
 
                 <label htmlFor="author">Author</label>
-                <input onChange={handleChange} value={authors} name="author" id="author" type="text" />
+                <input onChange={handleChange} value={author} name="author" id="author" type="text" />
             </form>
         </section>
     )

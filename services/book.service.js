@@ -289,9 +289,7 @@ function query(filterBy = {}) {
       }
       if (author) {
         const regExp = new RegExp(author, 'i')
-        books = books.filter(book =>
-          book.authors.some(a => regExp.test(a))
-        )
+        books = books.filter(book => regExp.test(book.authors))
       }
       return books
     })
@@ -313,8 +311,6 @@ function save(book) {
   if (book.id) {
     return storageService.put(BOOKS_KEY, book)
   } else {
-
-
     return storageService.post(BOOKS_KEY, book)
   }
 }
@@ -333,7 +329,7 @@ function _createBooks() {
 //   return book
 // }
 
-function getEmptyBook(title = '', price = 0) {
+function getEmptyBook() {
   const ctgs = [
     'Commentary', 'Ethics', 'Guidance',
     'Hasidism', 'Jewish Law', 'Jewish Liturgy',
@@ -345,17 +341,17 @@ function getEmptyBook(title = '', price = 0) {
 
   return {
     id: '',
-    title,
+    title: '',
     subtitle: utilService.makeLorem(10),
     authors: [],
     publishedDate: new Date().getFullYear(),
-    description: utilService.makeLorem(),
+    description: '' , //utilService.makeLorem()
     categories: [ctgs[utilService.getRandomIntInclusive(0, ctgs.length - 1)]],
     language: "en",
-    pageCount: utilService.getRandomIntInclusive(500, 2000),
+    pageCount: '',
     thumbnail: `http://coding-academy.org/books-photos/default.jpg`,
     listPrice: {
-      amount: price,
+      amount: '',
       currencyCode: "US",
       isOnSale: false
     }
