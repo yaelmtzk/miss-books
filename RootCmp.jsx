@@ -7,6 +7,7 @@ import { BookIndex } from "./pages/BookIndex.jsx"
 import { BookDetails } from "./pages/BookDetails.jsx"
 import { AppHeader } from "./cmps/AppHeader.jsx"
 import { BookEdit } from "./pages/BookEdit.jsx"
+import { UserMsg } from "./cmps/UserMsg.jsx"
 
 export function RootCmp() {
     return (
@@ -25,6 +26,7 @@ export function RootCmp() {
                     </Routes>
 
                 </main>
+                <UserMsg/>
             </section>
         </Router>
     )

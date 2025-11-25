@@ -1,5 +1,7 @@
 import { bookService } from "../services/book.service.js"
 import { LongTxt } from "../cmps/LongTxt.jsx"
+import { showErrorMsg } from "../services/event-bus.service.js";
+
 
 const { useState, useEffect } = React
 const { useParams, useNavigate, Link } = ReactRouterDOM
@@ -18,14 +20,11 @@ export function BookDetails() {
     function loadBook() {
         bookService.get(bookId)
             .then(book => setBook(book))
-            .catch(err => {
-                console.log('err:', err)
+            .catch(() => {
+                showErrorMsg('Couldn\'t get book...')
+                navigate(`/book`)
             })
             .finally(() => setIsLoading(false))
-    }
-
-    function onBack() {
-        navigate('/index')
     }
 
     if (!book) return <div>Loading...</div>
@@ -34,37 +33,48 @@ export function BookDetails() {
         pageCount, publishedDate, authors,
         listPrice: { amount, currencyCode } } = book
 
-    let readingLvl
-    if (pageCount > 500) readingLvl = 'Serious Reading'
-    else if (pageCount > 200) readingLvl = 'Decent Reading'
-    else readingLvl = 'Light Reading'
+    function getBookYearStat() {
+        const currYear = new Date().getFullYear()
+        const diff = currYear - publishedDate
+        if (diff > 10) return 'Vintage'
+        if (diff < 1) return 'New'
+    }
+    function getReadLvl() {
+        if (pageCount > 500) return 'Serious Reading'
+        if (pageCount > 200) return 'Descent Reading'
+        return 'Light Reading'
+    }
 
-    const currYear = new Date().getFullYear()
-    let publishStat = ''
-    if (currYear - publishedDate > 10) publishStat = 'Vintage'
-    else if (currYear - publishedDate < 1) publishStat = 'New'
-
-    let priceClass = ''
-    if (amount > 150) priceClass = 'red'
-    else if (amount < 20) priceClass = 'green'
+    function getPriceColor() {
+        if (amount > 150) return 'red'
+        if (amount < 20) return 'green'
+        return ''
+    }
 
     const loadingClass = isLoading ? 'loading' : ''
 
     return (
         <section className={`book-details container ${loadingClass}`}>
             <h1>{title}</h1>
+
             <h2>{subtitle}</h2>
+
             <img src={`../assets/img/${id}.jpg`}
                 onError={(ev) => ev.target.src = '/assets/img/default.jpg'}
                 alt="Book Image" />
+
             <p>Author: {authors}</p>
-            <p className={priceClass}>Price: {currencyCode} {amount}</p>
-            <p>Published At: {`${publishedDate} - ${publishStat}`}</p>
-            <p>Pages: {`${pageCount} - ${readingLvl}`}</p>
+
+            <p className={getPriceColor()}>Price: {currencyCode} {amount}</p>
+
+            <p>Published At: {`${publishedDate} - ${getBookYearStat()}`}</p>
+
+            <p>Pages: {`${pageCount} - ${getReadLvl()}`}</p>
 
             <LongTxt txt={description} />
+
             <div className="btn-section">
-                <button onClick={onBack}>Back</button>
+                <button><Link to={`/index`}>Back</Link></button>
                 <button ><Link to={`/index/edit/${book.id}`}>Edit</Link></button>
             </div>
 
