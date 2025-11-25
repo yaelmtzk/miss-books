@@ -14,7 +14,8 @@ const gBooks = [
     categories: ["Torah", "Nevi'im", "Ketuvim"],
     thumbnail: "http://coding-academy.org/books-photos/tanakh.jpg",
     language: "en",
-    listPrice: { amount: 49, currencyCode: "USD", isOnSale: false }
+    listPrice: { amount: 49, currencyCode: "USD", isOnSale: false },
+    reviews: []
   },
   {
     id: "JWB002",
@@ -27,7 +28,8 @@ const gBooks = [
     categories: ["Mishnah", "Jewish Law"],
     thumbnail: "http://coding-academy.org/books-photos/mishnah.jpg",
     language: "en",
-    listPrice: { amount: 59, currencyCode: "USD", isOnSale: true }
+    listPrice: { amount: 59, currencyCode: "USD", isOnSale: true },
+    reviews: []
   },
   {
     id: "JWB003",
@@ -40,7 +42,8 @@ const gBooks = [
     categories: ["Talmud", "Jewish Law"],
     thumbnail: "http://coding-academy.org/books-photos/talmud-bavli.jpg",
     language: "he",
-    listPrice: { amount: 99, currencyCode: "USD", isOnSale: false }
+    listPrice: { amount: 99, currencyCode: "USD", isOnSale: false },
+    reviews: []
   },
   {
     id: "JWB004",
@@ -53,7 +56,8 @@ const gBooks = [
     categories: ["Talmud", "Jewish Law"],
     thumbnail: "http://coding-academy.org/books-photos/talmud-yerushalmi.jpg",
     language: "he",
-    listPrice: { amount: 89, currencyCode: "USD", isOnSale: true }
+    listPrice: { amount: 89, currencyCode: "USD", isOnSale: true },
+    reviews: []
   },
   {
     id: "JWB005",
@@ -66,7 +70,8 @@ const gBooks = [
     categories: ["Midrash", "Commentary"],
     thumbnail: "http://coding-academy.org/books-photos/midrash.jpg",
     language: "he",
-    listPrice: { amount: 69, currencyCode: "USD", isOnSale: false }
+    listPrice: { amount: 69, currencyCode: "USD", isOnSale: false },
+    reviews: []
   },
   {
     id: "JWB006",
@@ -79,7 +84,8 @@ const gBooks = [
     categories: ["Jewish Law"],
     thumbnail: "http://coding-academy.org/books-photos/mishneh-torah.jpg",
     language: "he",
-    listPrice: { amount: 99, currencyCode: "USD", isOnSale: false }
+    listPrice: { amount: 99, currencyCode: "USD", isOnSale: false },
+    reviews: []
   },
   {
     id: "JWB007",
@@ -92,7 +98,8 @@ const gBooks = [
     categories: ["Philosophy", "Jewish Thought"],
     thumbnail: "http://coding-academy.org/books-photos/guide-perplexed.jpg",
     language: "he",
-    listPrice: { amount: 39, currencyCode: "USD", isOnSale: true }
+    listPrice: { amount: 39, currencyCode: "USD", isOnSale: true },
+    reviews: []
   },
   {
     id: "JWB008",
@@ -105,7 +112,8 @@ const gBooks = [
     categories: ["Mitzvot", "Jewish Law"],
     thumbnail: "http://coding-academy.org/books-photos/sefer-hamitzvot.jpg",
     language: "he",
-    listPrice: { amount: 29, currencyCode: "USD", isOnSale: false }
+    listPrice: { amount: 29, currencyCode: "USD", isOnSale: false },
+    reviews: []
   },
   {
     id: "JWB009",
@@ -118,7 +126,8 @@ const gBooks = [
     categories: ["Jewish Law"],
     thumbnail: "http://coding-academy.org/books-photos/shulchan-aruch.jpg",
     language: "he",
-    listPrice: { amount: 79, currencyCode: "USD", isOnSale: true }
+    listPrice: { amount: 79, currencyCode: "USD", isOnSale: true },
+    reviews: []
   },
   {
     id: "JWB010",
@@ -131,7 +140,8 @@ const gBooks = [
     categories: ["Kabbalah", "Mysticism"],
     thumbnail: "http://coding-academy.org/books-photos/zohar.jpg",
     language: "he",
-    listPrice: { amount: 99, currencyCode: "USD", isOnSale: false }
+    listPrice: { amount: 99, currencyCode: "USD", isOnSale: false },
+    reviews: []
   },
   {
     id: "JWB011",
@@ -144,7 +154,8 @@ const gBooks = [
     categories: ["Hasidism", "Ethics", "Jewish Thought"],
     thumbnail: "http://coding-academy.org/books-photos/tanya.jpg",
     language: "he",
-    listPrice: { amount: 35, currencyCode: "USD", isOnSale: true }
+    listPrice: { amount: 35, currencyCode: "USD", isOnSale: true },
+    reviews: []
   },
   {
     id: "JWB012",
@@ -157,7 +168,8 @@ const gBooks = [
     categories: ["Ethics", "Mussar"],
     thumbnail: "http://coding-academy.org/books-photos/mesilat-yesharim.jpg",
     language: "he",
-    listPrice: { amount: 25, currencyCode: "USD", isOnSale: false }
+    listPrice: { amount: 25, currencyCode: "USD", isOnSale: false },
+    reviews: []
   },
   {
     id: "JWB013",
@@ -170,7 +182,8 @@ const gBooks = [
     categories: ["Philosophy", "Jewish Thought"],
     thumbnail: "http://coding-academy.org/books-photos/kuzari.jpg",
     language: "he",
-    listPrice: { amount: 39, currencyCode: "USD", isOnSale: false }
+    listPrice: { amount: 39, currencyCode: "USD", isOnSale: false },
+    reviews: []
   },
   {
     id: "JWB014",
@@ -183,7 +196,8 @@ const gBooks = [
     categories: ["Ethics", "Jewish Thought"],
     thumbnail: "http://coding-academy.org/books-photos/chovot-levavot.jpg",
     language: "he",
-    listPrice: { amount: 29, currencyCode: "USD", isOnSale: false }
+    listPrice: { amount: 29, currencyCode: "USD", isOnSale: false },
+    reviews: []
   },
   {
     id: "JWB015",
@@ -196,7 +210,8 @@ const gBooks = [
     categories: ["Mitzvot", "Ethics"],
     thumbnail: "http://coding-academy.org/books-photos/sefer-hachinuch.jpg",
     language: "he",
-    listPrice: { amount: 39, currencyCode: "USD", isOnSale: true }
+    listPrice: { amount: 39, currencyCode: "USD", isOnSale: true },
+    reviews: []
   },
   {
     id: "JWB016",
@@ -209,7 +224,8 @@ const gBooks = [
     categories: ["Jewish Law"],
     thumbnail: "http://coding-academy.org/books-photos/mishnah-berurah.jpg",
     language: "he",
-    listPrice: { amount: 69, currencyCode: "USD", isOnSale: false }
+    listPrice: { amount: 69, currencyCode: "USD", isOnSale: false },
+    reviews: []
   },
   {
     id: "JWB017",
@@ -222,7 +238,8 @@ const gBooks = [
     categories: ["Ethics", "Guidance"],
     thumbnail: "http://coding-academy.org/books-photos/shemirat-halashon.jpg",
     language: "he",
-    listPrice: { amount: 29, currencyCode: "USD", isOnSale: false }
+    listPrice: { amount: 29, currencyCode: "USD", isOnSale: false },
+    reviews: []
   },
   {
     id: "JWB018",
@@ -235,7 +252,8 @@ const gBooks = [
     categories: ["Prayer", "Jewish Liturgy"],
     thumbnail: "http://coding-academy.org/books-photos/sidur.jpg",
     language: "he",
-    listPrice: { amount: 15, currencyCode: "USD", isOnSale: true }
+    listPrice: { amount: 15, currencyCode: "USD", isOnSale: true },
+    reviews: []
   },
   {
     id: "JWB019",
@@ -248,7 +266,8 @@ const gBooks = [
     categories: ["Ethics", "Guidance"],
     thumbnail: "http://coding-academy.org/books-photos/pele-yoetz.jpg",
     language: "he",
-    listPrice: { amount: 29, currencyCode: "USD", isOnSale: false }
+    listPrice: { amount: 29, currencyCode: "USD", isOnSale: false },
+    reviews: []
   },
   {
     id: "JWB020",
@@ -261,7 +280,8 @@ const gBooks = [
     categories: ["Kabbalah", "Mysticism"],
     thumbnail: "http://coding-academy.org/books-photos/shaar-hagilgulim.jpg",
     language: "he",
-    listPrice: { amount: 200, currencyCode: "USD", isOnSale: false }
+    listPrice: { amount: 200, currencyCode: "USD", isOnSale: false },
+    reviews: []
   }
 ]
 
@@ -273,7 +293,10 @@ export const bookService = {
   remove,
   save,
   getDefaultFilter,
-  getEmptyBook
+  getEmptyBook,
+  saveReview,
+  removeReview,
+  getEmptyReview
 }
 
 function query(filterBy = {}) {
@@ -345,7 +368,7 @@ function getEmptyBook() {
     subtitle: utilService.makeLorem(10),
     authors: [],
     publishedDate: new Date().getFullYear(),
-    description: '' , //utilService.makeLorem()
+    description: '', //utilService.makeLorem()
     categories: [ctgs[utilService.getRandomIntInclusive(0, ctgs.length - 1)]],
     language: "en",
     pageCount: '',
@@ -355,5 +378,41 @@ function getEmptyBook() {
       currencyCode: "US",
       isOnSale: false
     }
+  }
+}
+
+function saveReview(bookId, reviewToSave) {
+  return storageService.get(BOOKS_KEY, bookId)
+    .then(book => {
+      const review = _createReview(reviewToSave)
+      book.reviews.unshift(review)
+      return storageService.put(BOOKS_KEY, book)
+        .then(() => review)
+    })
+}
+
+function removeReview(bookId, reviewId) {
+  return storageService.get(BOOKS_KEY, bookId)
+    .then(book => {
+      const newReviews = book.reviews.filter((review) => review.id !== reviewId)
+      book.reviews = newReviews
+      return storageService.put(BOOKS_KEY, book)
+    })
+}
+
+function getEmptyReview() {
+  return {
+    fullName: '',
+    rating: 0,
+    date: new Date().toISOString().slice(0, 10),
+    txt: '',
+    selected: 0,
+  }
+}
+
+function _createReview(reviewToSave) {
+  return {
+    id: utilService.makeId(),
+    ...reviewToSave,
   }
 }

@@ -1,6 +1,8 @@
 import { bookService } from "../services/book.service.js"
 import { LongTxt } from "../cmps/LongTxt.jsx"
 import { showErrorMsg } from "../services/event-bus.service.js";
+import { AddReview } from "../cmps/AddReview.jsx";
+import { ReviewList } from "../cmps/ReviewList.jsx";
 
 
 const { useState, useEffect } = React
@@ -10,6 +12,7 @@ export function BookDetails() {
 
     const [book, setBook] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
+    const [isShowReviewModal, setIsShowReviewModal] = useState(null)
     const { bookId } = useParams()
     const navigate = useNavigate()
 
@@ -51,6 +54,33 @@ export function BookDetails() {
         return ''
     }
 
+    function onToggleReviewModal() {
+        setIsShowReviewModal((prevIsReviewModal) => !prevIsReviewModal)
+    }
+
+    function onSaveReview(reviewToAdd) {
+        bookService.saveReview(book.id, reviewToAdd)
+            .then((review => {
+                setBook(book => ({
+                    ...book,
+                    reviews: [review, ...book.reviews]
+                }))
+            }))
+            .catch(() => {
+                showErrorMsg(`Review to ${book.title} Failed!`)
+            })
+    }
+
+    function onRemoveReview(reviewId) {
+        bookService.removeReview(book.id, reviewId)
+            .then(() => {
+                setBook(book => {
+                    const filteredReviews = book.reviews.filter(review => review.id !== reviewId)
+                    return { ...book, reviews: filteredReviews }
+                })
+            })
+    }
+
     const loadingClass = isLoading ? 'loading' : ''
 
     return (
@@ -82,6 +112,19 @@ export function BookDetails() {
                 <button><Link to={`/index/${book.prevBookId}`}>Prev</Link></button>
                 <button><Link to={`/index/${book.nextBookId}`}>Next</Link></button>
             </section> */}
+
+            <button onClick={onToggleReviewModal}>Add Review</button>
+
+            {isShowReviewModal && (
+                <AddReview
+                    toggleReview={onToggleReviewModal}
+                    saveReview={onSaveReview}
+                />
+            )}
+
+            <div className='review-container'>
+                {book.reviews && <ReviewList reviews={book.reviews} onRemoveReview={onRemoveReview} />}
+            </div>
         </section>
     )
 }
